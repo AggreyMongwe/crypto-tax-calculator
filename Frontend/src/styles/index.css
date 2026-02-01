@@ -1,9 +1,11 @@
+@import './fonts.css';
+@import './theme.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import './fonts.css';
-@import './theme.css';
+
 
 :root { --root-font-scale: 112.5%; }
 
