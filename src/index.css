@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TaxTim Crypto Tax Calculator Design System */
+
+@layer base {
+  :root {
+    /* Core brand colors mapped from your hex codes */
+    --background: 0 0% 97%;
+    /* #F8F8F8 - White Background */
+    --foreground: 3 17% 34%;
+    /* #664A48 - Text Dark */
+
+    --card: 0 0% 100%;
+    --card-foreground: 3 17% 34%;
+    /* #664A48 */
+
+    /* Primary - Deep Teal */
+    --primary: 191 99% 29%;
+    /* #017792 - Deep Teal Section */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Header Teal */
+    --secondary: 182 48% 76%;
+    /* #A6DDDF - Header Teal */
+    --secondary-foreground: 191 99% 29%;
+
+    /* Accent - Coral */
+    --accent: 351 31% 84%;
+    /* #E6C5C9 - Accent Coral */
+    --accent-foreground: 3 17% 34%;
+
+    /* CTA - Green */
+    --cta-green: 115 11% 58%;
+    /* #8C9F8B - CTA Green */
+
+    --muted: 182 20% 94%;
+    --muted-foreground: 3 10% 45%;
+
+    --border: 182 20% 85%;
+    --input: 182 20% 90%;
+    --ring: 191 99% 29%;
+
+    --radius: 0.75rem;
+
+    /* Pop Shadows */
+    --shadow-pop: 0 10px 25px -5px rgba(1, 119, 146, 0.1), 0 8px 10px -6px rgba(1, 119, 146, 0.1);
+  }
+}
+
+.dark {
+  --background: 215 25% 10%;
+  --foreground: 210 15% 95%;
+
+  --card: 215 25% 13%;
+  --card-foreground: 210 15% 95%;
+
+  --popover: 215 25% 13%;
+  --popover-foreground: 210 15% 95%;
+
+  --primary: 200 90% 55%;
+  --primary-foreground: 215 25% 10%;
+
+  --secondary: 215 20% 20%;
+  --secondary-foreground: 210 15% 90%;
+
+  --muted: 215 20% 18%;
+  --muted-foreground: 215 15% 60%;
+
+  --accent: 195 40% 20%;
+  --accent-foreground: 195 75% 60%;
+
+  --destructive: 0 62% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  --gain: 152 60% 50%;
+  --gain-foreground: 0 0% 100%;
+  --gain-muted: 152 30% 18%;
+
+  --loss: 0 62% 55%;
+  --loss-foreground: 0 0% 100%;
+  --loss-muted: 0 30% 18%;
+
+  --warning: 38 85% 55%;
+  --warning-foreground: 0 0% 10%;
+  --warning-muted: 38 40% 18%;
+
+  --border: 215 20% 22%;
+  --input: 215 20% 22%;
+  --ring: 200 90% 55%;
+
+  --sidebar-background: 215 25% 8%;
+  --sidebar-foreground: 210 15% 90%;
+  --sidebar-primary: 195 75% 50%;
+  --sidebar-primary-foreground: 215 25% 10%;
+  --sidebar-accent: 215 25% 14%;
+  --sidebar-accent-foreground: 210 15% 90%;
+  --sidebar-border: 215 20% 16%;
+  --sidebar-ring: 195 75% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  .bg-cta {
+    background-color: hsl(var(--cta-green));
+  }
+
+  .text-cta {
+    color: hsl(var(--cta-green));
+  }
+
+  /* The "Pop" Shadow utility */
+  .shadow-pop {
+    shadow: var(--shadow-pop);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .shadow-pop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(1, 119, 146, 0.15), 0 10px 10px -5px rgba(1, 119, 146, 0.1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
