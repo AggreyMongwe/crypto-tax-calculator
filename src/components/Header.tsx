@@ -12,12 +12,16 @@ export function Header() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group transition-transform active:scale-95">
-            <div className="h-10 w-10 rounded-xl bg-[#017792] flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform">
+            {/* Calculator Icon with Green Background */}
+            <div className="h-10 w-10 rounded-xl bg-[#00C853] flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform">
               <Calculator className="h-5 w-5 text-white" />
             </div>
+
             <div>
-              <h1 className="font-bold text-xl text-[#664A48] tracking-tight">
-                TaxTim <span className="text-[#017792]">Crypto</span>
+              {/* TaxTim Name with Custom Font */}
+              <h1 className="font-sans font-extrabold text-xl text-[#664A48] tracking-tight">
+                <span className="font-[‘Poppins’,sans-serif]">TaxTim</span>{' '}
+                <span className="text-[#017792] font-bold">Crypto</span>
               </h1>
               <p className="text-[10px] uppercase font-bold text-[#664A48]/60">SARS-Compliant FIFO</p>
             </div>
@@ -38,7 +42,7 @@ export function Header() {
                 </Button>
               </div>
             ) : (
-              <Button asChild className="bg-[#8C9F8B] hover:bg-[#7a8c79] text-white shadow-pop font-semibold">
+              <Button asChild className="bg-[#00C853] hover:bg-[#E35335] text-white shadow-pop font-semibold">
                 <Link to="/auth"><LogIn className="h-4 w-4 mr-2" /> Sign In</Link>
               </Button>
             )}

@@ -196,7 +196,7 @@ export function TransactionInput({ onTransactionsParsed, onServerProcessed }: Tr
           <Button
             onClick={handleProcess}
             disabled={!pastedData.trim() || previewCount === null || serverProcessing}
-            className="w-full h-14 bg-[#8C9F8B] hover:bg-[#7a8c79] text-white text-lg font-bold rounded-2xl shadow-[0_10px_20px_-10px_rgba(140,159,139,0.5)] transition-all flex items-center justify-center gap-3"
+            className="w-full h-14 bg-[#00C853] hover:bg-[#E35335] text-white text-lg font-bold rounded-2xl shadow-[0_10px_20px_-10px_rgba(140,159,139,0.5)] transition-all flex items-center justify-center gap-3"
           >
             {serverProcessing ? (
               <>
