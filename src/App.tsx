@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound";
 import Docs from "./pages/Docs";
 import Help from "./pages/Help";
 import { ScrollToTop } from "./pages/ScrollToTop";
-
+import { TaxRobot } from "./components/TaxRobot";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +23,12 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+
+          {/* The TaxRobot is placed here so it persists across all pages.
+            It sits outside <Routes> so the chat doesn't close when you navigate.
+          */}
+          <TaxRobot />
+
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />

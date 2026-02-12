@@ -138,6 +138,10 @@ export function SummaryDashboard({
 // --- Sub-Components ---
 
 function StatCard({ title, subtitle, value, isMonetary, variant = 'default', icon }: StatCardProps) {
+  // Determine color based on profit (green) or loss (orange)
+  const isPositive = value >= 0;
+  const displayColor = isPositive ? "#059669" : "#d97706";
+
   return (
     <motion.div whileHover={{ y: -5 }}>
       <Card className="h-full border-none shadow-lg bg-white overflow-hidden group">
@@ -153,10 +157,10 @@ function StatCard({ title, subtitle, value, isMonetary, variant = 'default', ico
               {icon}
             </div>
           </div>
-          <div className={cn(
-            "mt-5 font-mono text-2xl font-black",
-            !isMonetary ? "text-[#664A48]" : value >= 0 ? "text-[#017792]" : "text-red-500"
-          )}>
+          <div
+            className="mt-5 font-mono text-2xl font-black"
+            style={{ color: !isMonetary ? "#664A48" : displayColor }}
+          >
             {isMonetary ? formatZAR(value) : value}
           </div>
         </CardContent>
@@ -166,6 +170,8 @@ function StatCard({ title, subtitle, value, isMonetary, variant = 'default', ico
 }
 
 function CoinCard({ summary }: CoinCardProps) {
+  const isPositive = summary.realizedGainOrLoss >= 0;
+
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
@@ -178,11 +184,11 @@ function CoinCard({ summary }: CoinCardProps) {
           </div>
           <span className="font-black text-[#664A48]">{summary.coin}</span>
         </div>
-        <Badge className={cn(
-          "font-mono border-none shadow-sm",
-          summary.realizedGainOrLoss >= 0 ? "bg-[#8C9F8B] text-white" : "bg-red-100 text-red-600"
-        )}>
-          {summary.realizedGainOrLoss >= 0 ? '+' : ''}{formatZAR(summary.realizedGainOrLoss)}
+        <Badge
+          className="font-mono border-none shadow-sm text-white"
+          style={{ backgroundColor: isPositive ? "#059669" : "#d97706" }}
+        >
+          {isPositive ? '+' : ''}{formatZAR(summary.realizedGainOrLoss)}
         </Badge>
       </div>
 
@@ -192,8 +198,9 @@ function CoinCard({ summary }: CoinCardProps) {
           <span className="font-mono font-bold text-[#017792]">{formatCrypto(summary.currentBalance)}</span>
         </div>
         <div className="h-1.5 w-full bg-[#F8F8F8] rounded-full overflow-hidden flex">
-          <div className="bg-[#8C9F8B] h-full" style={{ width: '60%' }} /> {/* Placeholder Ratio */}
-          <div className="bg-[#017792] h-full" style={{ width: '40%' }} />
+          {/* Green for profit portion, Orange for cost portion visual */}
+          <div className="bg-[#059669] h-full" style={{ width: '60%' }} />
+          <div className="bg-[#d97706] h-full" style={{ width: '40%' }} />
         </div>
       </div>
     </motion.div>
