@@ -17,13 +17,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { 
-  History, 
-  Trash2, 
-  Upload, 
-  Calendar, 
-  Coins, 
-  TrendingUp, 
+import {
+  History,
+  Trash2,
+  Upload,
+  Calendar,
+  Coins,
+  TrendingUp,
   TrendingDown,
   Loader2,
   FolderOpen,
@@ -148,7 +148,7 @@ export default function Sessions() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}

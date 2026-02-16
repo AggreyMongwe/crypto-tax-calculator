@@ -137,7 +137,7 @@ export function FileUpload({ onTransactionsParsed }: FileUploadProps) {
                   <strong>{parseResult.count} transactions</strong> from <strong>{EXCHANGE_NAMES[parseResult.exchange]}</strong> ready.
                 </AlertDescription>
               </Alert>
-              <Button onClick={() => onTransactionsParsed(parsedTransactions)} className="w-full mt-4 h-12 bg-[#8C9F8B] hover:bg-[#7a8c79] text-white font-bold rounded-xl shadow-[0_10px_20px_-10px_rgba(140,159,139,0.5)]">
+              <Button onClick={() => onTransactionsParsed(parsedTransactions)} className="w-full mt-4 h-12 bg-[#00C853] hover:bg-[#E35335] text-white font-bold rounded-xl shadow-[0_10px_20px_-10px_rgba(140,159,139,0.5)]">
                 Import to Calculator
               </Button>
             </motion.div>
