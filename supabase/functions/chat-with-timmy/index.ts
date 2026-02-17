@@ -6,23 +6,25 @@ const corsHeaders = {
 };
 
 serve(async (req: Request) => {
+  // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
 
   try {
     const { message } = await req.json();
+    console.log("Timmy received a message:", message);
 
-    // FIX 1: Use the correct Chat Completions endpoint
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    // CALL GROQ INSTEAD OF OPENAI
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${Deno.env.get("OPENAI_API_KEY")}`,
+        "Authorization": `Bearer ${Deno.env.get("GROQ_API_KEY")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // FIX 2: Use a valid model name (e.g., "gpt-4o-mini" or "gpt-4")
-        model: "gpt-4o-mini",
+        // Using Llama-3.3-70b-versatile (very smart and completely free)
+        model: "llama-3.3-70b-versatile",
         messages: [
           {
             role: "system",
@@ -37,14 +39,16 @@ serve(async (req: Request) => {
     });
 
     const data = await response.json();
+    console.log("Groq Response Status:", response.status);
 
-    // FIX 3: Correctly parse the standard OpenAI response
-    const reply = data.choices?.[0]?.message?.content ?? "Sorry, I couldn’t process that request.";
+    const reply = data.choices?.[0]?.message?.content ?? "Sorry, I’m experiencing a small glitch in my tax-brain. Try again?";
 
     return new Response(JSON.stringify({ reply }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
+
   } catch (error) {
+    console.error("Function Error:", error.message);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
